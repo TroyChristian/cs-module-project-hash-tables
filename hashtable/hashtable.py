@@ -137,8 +137,8 @@ class HashTable:
         current_node = self.buckets[index].head
         while current_node:
             if current_node.key == key:
-                return current.value
-            current = current.next
+                return current_node.value
+            current_node = current_node.next
         return None 
 
 
