@@ -78,7 +78,7 @@ class HashTable:
         Take an arbitrary key and return a valid integer index
         between within the storage capacity of the hash table.
         """
-        #return self.fnv1(key) % self.capacity
+        
         return self.djb2(key) % self.capacity
 
     def put(self, key, value):
@@ -89,7 +89,10 @@ class HashTable:
 
         Implement this.
         """
-        # Your code here
+        value = djb2(key)
+        index = self.hash_index(key) 
+        current_node = self.storage[index].head #Whatever linkedList in the master array you wind up identify its head
+        
 
 
     def delete(self, key):
