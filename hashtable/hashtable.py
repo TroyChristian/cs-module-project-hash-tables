@@ -149,7 +149,15 @@ class HashTable:
 
         Implement this.
         """
-        # Your code here
+        if self.get_load_factor() > 0.7:
+            previous_buckets = self.buckets
+            self.buckets = [LinkedList()] * new_capacity
+            for element in previous_buckets:
+                current_node = element.head
+                while current_node:
+                    self.put(current_node.key, current_node.value)
+                    current_node = current_node.next
+            self.capacity = new_capacity
 
 
 
