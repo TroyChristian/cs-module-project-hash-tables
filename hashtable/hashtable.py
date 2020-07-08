@@ -114,7 +114,15 @@ class HashTable:
 
         Implement this.
         """
-        # Your code here
+        index = self.hash_index(key) 
+        current_node = self.buckets[index]
+        if not current_node.seek(key): # I assume a key not found in seek will return falsy
+            print("Key is not in the linked list and thus cannot be deleted!")
+            return 
+        
+        self.put(key, None) #if key is found, replace its corresponding value with none.
+        self.count -=1
+
 
 
     def get(self, key):
