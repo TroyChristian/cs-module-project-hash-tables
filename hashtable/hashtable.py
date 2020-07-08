@@ -23,7 +23,7 @@ class HashTable:
     """
 
     def __init__(self, capacity):
-        self.storage = [LinkedList()] * MIN_CAPACITY
+        self.buckets = [LinkedList()] * MIN_CAPACITY
         self.count = 0 # represents occupied spaces in the HT 
         self.capacity = capacity 
         
@@ -79,7 +79,7 @@ class HashTable:
         between within the storage capacity of the hash table.
         """
         
-        return self.djb2(key) % self.capacity
+        return self.djb2(key) % self.capacity #always get an index in range, modulo gaurentee's this
 
     def put(self, key, value):
         """
@@ -89,10 +89,21 @@ class HashTable:
 
         Implement this.
         """
-        value = djb2(key)
-        index = self.hash_index(key) 
-        current_node = self.storage[index].head #Whatever linkedList in the master array you wind up identify its head
         
+        index = self.hash_index(key) 
+        current_node = self.buckets[index].head #Whatever linkedList in the master array you wind up identify its head
+
+        #over write key, value with new value if key already exists, 
+        while current_node:
+            if current_node.key == key:
+                current_node.value = value
+            
+            current_node = current_node.next # while loop breaks when value of next node, is None 
+                                             # at the end of the Linked List
+
+        new_entry = HashTableEntry(key, value)
+        self.buckets[index].insert_at_head(new_entry)
+        self.count += 1
 
 
     def delete(self, key):
