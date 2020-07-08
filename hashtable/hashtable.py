@@ -1,4 +1,4 @@
-import LinkedList
+from LinkedList import LinkedList 
 
 class HashTableEntry:
     """
@@ -58,7 +58,7 @@ class HashTable:
         Implement this, and/or DJB2.
         """
 
-        # Your code here
+        pass 
 
 
     def djb2(self, key):
@@ -67,9 +67,9 @@ class HashTable:
 
         Implement this, and/or FNV-1.
         """
-        hash = 5381
+        hash = 5381 #put any prime here 
         for c in key:
-            hash = (hash * 33) + ord(c)
+            hash = (hash * 33) + ord(c) # ord returns integer representing Unicode char
         return hash 
 
 
