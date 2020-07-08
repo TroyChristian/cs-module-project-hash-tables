@@ -17,6 +17,10 @@ class LinkedList:
         previous_node = current_node
         current_node = current_node.next
 
+        if current_node.value == value:
+            self.head = self.head.next 
+            return current_node
+
         while current_node is not None:
             if current_node.value == value:
                 previous_node = current_node.next 
@@ -27,7 +31,14 @@ class LinkedList:
                 current_node = current_node.next
         return None 
 
-        if current_node.value == value:
-            self.head = self.head.next 
-            return current_node
+    
+    def seek(self, value):
+        current_node = self.head
+
+        while current_node is not None:
+            if current_node.value == value:
+                return current_node
+            current_node = current_node.next 
+
+
         
