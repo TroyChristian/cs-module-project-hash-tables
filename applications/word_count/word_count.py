@@ -16,7 +16,7 @@ def word_count(words):
                 word_map[clean_word] += 1 # increment value of wordKey if it already exists in word map
         elif clean_word not in word_map:
                 word_map[clean_word] = 1 # create key:value in list {I:1}
-                print(word_map)
+                
 
         
 
