@@ -2,7 +2,7 @@ import string
 ascii_letters = set(map(ord, string.ascii_letters))
 non_letters = ''.join(chr(i) for i in range(256) if i not in ascii_letters)
 
-ignored_characters = [" : ; , . - + = / \ | [ ] { } ( ) * ^ &"]
+
 
 
 def word_count(words):
